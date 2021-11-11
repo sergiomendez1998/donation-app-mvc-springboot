@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="plantilla/plantilla::head">
+    <meta charset="UTF-8">
+    <title>donations</title>
+</head>
+<body>
+<section th:fragment="donationTable" id="donation">
+
+    <div class="row" style="text-align:center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                       <h4>Your Donations, thanks for supporting us!<h4>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <table class="table table-stryped"  id="donations">
+                            <thead class="table-dark">
+
+
+                            <th>Donation Amount</th>
+                            <th>Date of Donation</th>
+                            <th>Countries</th>
+                            <th>Institutions</th>
+
+                            </thead>
+                            <tbody>
+                            <tr  th:each="donationList : ${donationList}">
+                                <td th:text="${donationList.donationAmount}"></td>
+                                <td th:text="${#temporals.format(donationList.dateOfDonation, 'yyyy-MM-dd')}"></td>
+                                <td th:text="${donationList.country.name}"></td>
+                                <td th:text="${donationList.institution.name}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+</section>
+</body>
+</html>

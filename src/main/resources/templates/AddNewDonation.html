@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="layout/layout::head">
+    <meta charset="UTF-8">
+
+    <title>Agregar Nuevo Punto</title>
+</head>
+<body>
+
+<header  th:replace="layout/layout::header"></header>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<br>
+
+<div class="alert alert-primary alert-dismissible fade show" role="alert">
+    <strong>Hi Benefactor thanks for donating!</strong> We are almost set about Your donation <i class="fas fa-credit-card"></i>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<div class="card">
+
+    <div class="card-body">
+
+
+
+        <br>
+        <br>
+        <form th:action="@{/saveDonation}" name="form_punto" method="POST" th:object="${donation}" class="row g-3 was-validated">
+
+            <div class="col-md-4">
+                <i class="fas fa-credit-card"></i>
+                <label for="inputPayment" class="form-label">Method Payment:</label>
+
+                <select id="inputPayment" class="form-select" required>
+                    <option selected enable value="">Choose...</option>
+                    <option>Credit Card</option>
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <i class="fas fa-dollar-sign"></i>
+                <label for="amount" class="form-label">Amount:</label>
+                <input type="number" class="form-control" id="amount"  th:field="*{donationAmount}" required>
+            </div>
+
+
+            <div class="col-md-4">
+                <i class="fas fa-flag"></i>
+                <label for="inputCountry">Country</label>
+                <select id="inputCountry" th:field="*{country}" class="form-control" required>
+                    <option selected enable value="">Choose</option>
+                    <option th:each="countryList : ${countryList}" th:text="${countryList.name}"  th:value="${countryList.countryId}"></option>
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <i class="fas fa-university"></i>
+                <label for="inputInstitution">Institution</label>
+                <select id="inputInstitution" th:field="*{institution}" class="form-control" required>
+                    <option selected enable value="">Choose</option>
+                    <option th:each="institutionList : ${institutionList}" th:text="${institutionList.name}"  th:value="${institutionList.institutionId}"></option>
+                </select>
+            </div>
+
+            <br>
+            <div class="col-12">
+            <button type="submit"  id="btn_submit" value="validar" class="btn btn-primary"> <i class="fas fa-save"></i> Donate </button>
+            <a class="btn btn-danger" th:href="@{/}" role="button"> <i class="fas fa-window-close"></i>Cancel</a>
+                </div>
+        </form>
+    </div>
+</div>
+<br>
+<br>
+
+<header th:replace="layout/layout ::footer"></header>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

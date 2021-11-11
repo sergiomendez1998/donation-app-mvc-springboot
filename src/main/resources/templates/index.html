@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout::head">
+  <title>Donation web page</title>
+</head>
+
+<body style=" background-color:black">
+<header  th:replace="layout/layout::header"></header>
+
+<div class="alert alert-info alert-dismissible fade show" th:if="${message !=null}" role="alert">
+  <label th:text="${message}"><span aria-hidden="true">&times;</span></label>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<header  th:replace="layout/cards::cards"></header>
+<section th:replace="layout/donationList :: donationTable"></section>
+<header th:replace="layout/layout ::footer"></header>
+</body>

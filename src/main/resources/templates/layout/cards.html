@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org/"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout::head">
+  <meta charset="UTF-8">
+  <title>cards</title>
+</head>
+<body>
+
+<section th:fragment="cards">
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card text-center bg-primary text-white mb-3">
+          <div class="card-body">
+
+            <h3>Donation Fund</h3>
+            <h4 class="display-4">
+              <i class="fas fa-dollar-sign"></i> [[${totalAmount}]]
+            </h4>
+
+          </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card text-center bg-warning text-white mb-3">
+        <div class="card-body">
+          <h3>Countries</h3>
+          <h4 class="display-4">
+            <i class="fas fa-globe-africa"></i> [[${totalCountries}]]
+          </h4>
+
+        </div>
+      </div>
+    </div>
+      <div class="col-md-3">
+        <div class="card text-center bg-info text-white mb-3">
+          <div class="card-body">
+            <h3>Institutions</h3>
+            <h4 class="display-4">
+              <i class="fas fa-university"></i> [[${totalInstitutions}]]
+            </h4>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card text-center bg-danger text-white mb-3">
+          <div class="card-body">
+            <h3>Benefactors</h3>
+            <h4 class="display-4">
+              <i class="fas fa-users"></i> [[${benefactors}]]
+            </h4>
+
+          </div>
+        </div>
+      </div>
+
+</div>
+
+  </div>
+</section>
+
+</body>
+</html>

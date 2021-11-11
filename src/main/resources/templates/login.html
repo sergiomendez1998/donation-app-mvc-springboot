@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns="http://www.w3.org/1999/xhtml">
+
+<head th:replace="layout/layout::head">
+
+    <title>LOGIN PAGE</title>
+
+</head>
+<body style="background-color:#071E41">
+<header  th:replace="layout/layout::header"></header>
+
+<div class="alert alert-info alert-dismissible fade show" th:if="${message !=null}" role="alert">
+    <label th:text="${message}"><span aria-hidden="true">&times;</span></label>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+        <div class="col-md-8 col-lg-7 col-xl-6">
+            <img src="https://preview.colorlib.com/theme/bootstrap/login-form-07/images/undraw_remotely_2j6y.svg"   width="90%_or_px" alt="Phone image">
+        </div>
+
+        <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1" >
+            <div class="card" style="border-radius: 1rem; background-color: floralwhite">
+
+                <div class="card-body p-5 text-center">
+                    <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                       username or password is incorrect please try again!
+                    </div>
+
+                    <h1 class="mb-5">Welcome Back</h1>
+                    <hr class="mt-4">
+                    <h2><i class="fas fa-money-check-alt"></i> Donation Web App</h2>
+                    <p class="text-black mb-5">Please Enter you credentials to login into your account!</p>
+
+                    <form id="login-form" class="form"  method="POST" th:action="@{/login}">
+
+                        <!-- username input -->
+                        <div class="form-outline mb-4">
+                            <label for="username" style="padding-right: 18rem"> <span class="fas fa-user"></span></label>
+
+                            <input type="text" name="username" id="username" class="form-control" placeholder="type your Username"
+                                   style ="border-radius: 20px" required="true">
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                            <label for="username" style="padding-right: 18rem"> <span class="fas fa-lock"></span></label>
+                            <input type="password" name="password" id="password" class="form-control"  placeholder="type your Password"
+                                   style ="border-radius: 20px" required="true"
+                            >
+                        </div>
+
+                        <!-- Submit button -->
+
+                        <button type="submit" class="btn btn-primary btn-lg" >
+                            <i class="fas fa-sign-in-alt"></i> Log in
+                        </button>
+                        <hr class="mt-4">
+                        <p class="small fw-bold mt-2 pt-1 mb-0">Do you want to start donating today?
+                            <a th:href="@{/register}" class="link-danger">Register Now!</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
