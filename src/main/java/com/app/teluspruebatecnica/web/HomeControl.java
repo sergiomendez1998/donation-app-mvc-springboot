@@ -21,13 +21,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 @Controller
 @Slf4j
 public class HomeControl {
+
     @Autowired
     private UserService userService;
 
@@ -48,10 +46,14 @@ public class HomeControl {
 
 
     @GetMapping("/")
-    public String inicio(Model model, @AuthenticationPrincipal User user) {
+    public String inicio(Model model, @AuthenticationPrincipal User user, boolean invalidSession) {
 
         log.info("user login: "+ user);
         log.info("executing the controller SpringBoot");
+
+        if (invalidSession){
+            model.addAttribute("invalidSession", "your session has expired!!");
+        }
         return "index";
     }
 

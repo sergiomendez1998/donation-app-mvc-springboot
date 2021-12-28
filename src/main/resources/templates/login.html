@@ -10,11 +10,6 @@
 <body style="background-color:#071E41">
 <header  th:replace="layout/layout::header"></header>
 
-<div class="alert alert-info alert-dismissible fade show" th:if="${message !=null}" role="alert">
-    <label th:text="${message}"><span aria-hidden="true">&times;</span></label>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-
 <div class="container py-5 h-100">
     <div class="row d-flex align-items-center justify-content-center h-100">
         <div class="col-md-8 col-lg-7 col-xl-6">
@@ -25,8 +20,14 @@
             <div class="card" style="border-radius: 1rem; background-color: floralwhite">
 
                 <div class="card-body p-5 text-center">
-                    <div th:if="${param.error}" class="alert alert-danger" role="alert">
-                       username or password is incorrect please try again!
+                    <div th:if="${param.error}"  class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fas fa-exclamation-triangle"></i>  <Strong> Incorrect username or password, try again!</Strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <div th:if="${invalidSession !=null}"  class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fas fa-exclamation-triangle"></i>  <Strong> ${invalidSession}</Strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
 
                     <h1 class="mb-5">Welcome Back</h1>

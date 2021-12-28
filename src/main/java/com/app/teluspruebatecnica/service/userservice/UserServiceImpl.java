@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService {
     private EntityManager entityManager;
 
 
+
     //get all users
     @Override
     @Transactional(readOnly = true)
